@@ -1,13 +1,27 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import "./header.css";
+@import "./icon.css";
+@import "ui.css";
+
 @theme {
-  --color-black: #000000;
-  --color-black-90: #111111;
-  --color-black-80: #222222;
-  --color-text: #ffffff;
+  --color-background: #ffffff;
+  --color-foreground: #fafafa;
+  --color-text: #111111;
+  --color-border: #eeeeee;
+}
+
+@layer theme {
+  .dark {
+    --color-background: #000000;
+    --color-foreground: #111111;
+    --color-text: #ffffff;
+    --color-border: #222222;
+  }
 }
 
 body {
-  background-color: var(--color-black);
-  color: var(--color-text);
+  @apply px-5 md:px-10 min-h-screen bg-background text-text;
 }

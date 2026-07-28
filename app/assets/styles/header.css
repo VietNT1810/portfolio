@@ -1,0 +1,34 @@
+.main-header {
+  @apply sticky top-0 z-100 border-b border-border;
+
+  .main-header-container {
+    @apply w-full h-16 flex justify-between items-stretch;
+  }
+
+  .main-header-logo {
+    @apply flex items-center px-4;
+  }
+
+  .main-header-nav {
+    @apply flex items-center;
+
+    .main-header-nav__item {
+      @apply h-8 text-[16px] flex items-center px-2 opacity-60 hover:opacity-100 hover:bg-border rounded-md transition-all ease-in-out duration-300;
+    }
+  }
+
+  .main-header-actions {
+    @apply flex items-center gap-4 px-4;
+
+    .main-header-socials {
+      @apply flex items-center gap-2;
+    }
+
+    .main-header-social {
+      @apply w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-border transition-all ease-in-out duration-300;
+      svg {
+        @apply w-5 h-5;
+      }
+    }
+  }
+}

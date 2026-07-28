@@ -1,0 +1,8 @@
+/* Theme toggle */
+.theme-toggle {
+  @apply w-8 h-8 flex items-center justify-center rounded-md cursor-pointer hover:bg-border transition-all ease-in-out duration-300;
+}
+
+.theme-toggle__icon {
+  @apply w-5 h-5;
+}

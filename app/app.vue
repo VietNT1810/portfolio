@@ -1,6 +1,6 @@
 <template>
   <main
-    class="mx-auto w-full max-w-350 overflow-x-clip border-x border-b border-black-80 bg-black-90"
+    class="mx-auto w-full max-w-350 overflow-x-clip border-x border-b border-border bg-foreground"
   >
     <Header />
     <NuxtPage />
