@@ -18,6 +18,8 @@
           :class="`tooltip-${placement}`"
           :style="tooltipStyle"
           role="tooltip"
+          @mouseenter="show"
+          @mouseleave="hide"
         >
           <slot name="content">{{ text }}</slot>
         </div>
@@ -55,9 +57,11 @@ const tooltipStyle = reactive<CSSProperties>({
 });
 
 let showTimer: ReturnType<typeof setTimeout> | undefined;
+let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
 function show(): void {
   clearTimeout(showTimer);
+  clearTimeout(hideTimer);
   showTimer = setTimeout(async () => {
     visible.value = true;
     await nextTick();
@@ -67,7 +71,11 @@ function show(): void {
 
 function hide(): void {
   clearTimeout(showTimer);
-  visible.value = false;
+  clearTimeout(hideTimer);
+  // small delay so moving pointer between trigger and tooltip doesn't close it
+  hideTimer = setTimeout(() => {
+    visible.value = false;
+  }, 80);
 }
 
 interface Position {
@@ -128,7 +136,7 @@ function updatePosition(): void {
   background: #fafafa;
   border-radius: 6px;
   white-space: nowrap;
-  pointer-events: none;
+  pointer-events: auto;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 

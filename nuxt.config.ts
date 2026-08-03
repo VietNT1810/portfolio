@@ -7,10 +7,7 @@ import svgLoader from 'vite-svg-loader';
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/eslint',
-    '@vueuse/nuxt',
-  ],
+  modules: ['@nuxt/eslint', '@vueuse/nuxt', "@nuxt/fonts", '@nuxt/image'],
   eslint: {
     config: {
       stylistic: true
@@ -25,6 +22,13 @@ export default defineNuxtConfig({
         symbolId: 'icon-[name]', // e.g. icon-message-circle
       }),
       svgLoader(),
+    ],
+  },
+  fonts: {
+    families: [
+      { name: "Geist", provider: "google", global: true },
+      { name: "Geist Mono", provider: "google", global: true },
+      { name: "Caveat", provider: "google", global: true },
     ],
   },
 })

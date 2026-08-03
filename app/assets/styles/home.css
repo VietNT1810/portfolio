@@ -1,0 +1,95 @@
+section {
+  @apply py-16;
+}
+
+.container {
+  @apply mx-auto px-4 md:px-8;
+  width: min(1200px, 100%);
+}
+
+.home-title {
+  @apply font-bold font-sans text-4xl mb-4;
+}
+
+/* Hero section */
+.hero {
+  @apply py-16;
+}
+
+.hero-grid {
+  @apply grid grid-cols-1 gap-8 md:grid-cols-2;
+}
+
+.hero-info {
+  .hero-welcome {
+    @apply font-handwriting font-medium text-3xl my-4;
+  }
+  .hero-name {
+    @apply font-bold font-mono;
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
+    span {
+      @apply block text-lg md:text-xl font-normal;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    }
+  }
+  .code-card {
+    @apply bg-card border border-border rounded-xl px-1 pb-1 mt-5;
+    .code-header {
+      @apply flex items-center gap-3 px-3 py-2.5 text-[#ababab];
+      .code-icon {
+        @apply w-4 h-4;
+      }
+      .code-title {
+        @apply font-mono text-sm;
+      }
+    }
+    pre {
+      @apply whitespace-pre-wrap overflow-x-auto border border-border rounded-xl p-3;
+    }
+  }
+}
+
+.hero-visual {
+  @apply flex items-center justify-center;
+  .hero-profile {
+    @apply w-full max-w-60 rounded-full flex flex-col items-center gap-4;
+    .avatar-shadow {
+      @apply rounded-full mb-4;
+      box-shadow: 0 0 0 6px #ffffff14, 0 0 32px #ffffff73, 0 0 72px #ffffff33,
+        0 0 120px #ffffff14;
+    }
+  }
+  .hero-profile__image {
+    @apply w-full max-w-60 rounded-full;
+  }
+  .profile-info {
+    @apply flex flex-col items-center gap-2.5;
+    h2 {
+      @apply font-mono text-2xl whitespace-nowrap;
+    }
+    p {
+      @apply text-sm text-center;
+    }
+  }
+  .profile-contact {
+    @apply flex items-center gap-2;
+    .profile-contact-btn {
+      @apply w-11 h-11 flex items-center justify-center rounded-full border border-border;
+    }
+  }
+}
+
+#about {
+  .about-grid {
+    @apply w-full grid grid-cols-1 md:grid-cols-2 border border-border gap-px bg-border;
+    .about-grid__item {
+      @apply flex items-center gap-2.5 p-2.5 bg-foreground;
+      .about-grid__icon {
+        @apply w-6 h-6 flex items-center justify-center rounded-sm border border-border;
+      }
+      .about-grid__text {
+        @apply text-sm;
+      }
+    }
+  }
+}

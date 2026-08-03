@@ -1,5 +1,5 @@
 .main-header {
-  @apply sticky top-0 z-100 border-b border-border;
+  @apply sticky top-0 z-100 border-b border-border bg-foreground;
 
   .main-header-container {
     @apply w-full h-16 flex justify-between items-stretch;
@@ -18,7 +18,7 @@
   }
 
   .main-header-actions {
-    @apply flex items-center gap-4 px-4;
+    @apply h-8 flex items-center self-center px-4;
 
     .main-header-socials {
       @apply flex items-center gap-2;

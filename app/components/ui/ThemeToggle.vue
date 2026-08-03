@@ -6,8 +6,8 @@
     @click="toggleDark()"
   >
     <ClientOnly>
-      <icon-sun v-if="isDark" class="theme-toggle__icon" />
-      <icon-moon v-else class="theme-toggle__icon" />
+      <icon-moon v-if="isDark" class="theme-toggle__icon" />
+      <icon-sun v-else class="theme-toggle__icon" />
     </ClientOnly>
   </button>
 </template>

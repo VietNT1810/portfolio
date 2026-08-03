@@ -1,13 +1,12 @@
 <template>
-  <header class="main-header">
+  <header class="main-header" data-box-decoration="bottom">
     <div class="main-header-container">
       <div class="main-header-logo">
-        <NuxtLink to="/">
+        <nuxt-link to="/">
           <Logo class="h-8" />
-        </NuxtLink>
+        </nuxt-link>
       </div>
       <nav class="main-header-nav">
-        <a class="main-header-nav__item" href="">Home</a>
         <a class="main-header-nav__item" href="">About</a>
         <a class="main-header-nav__item" href="">Skills</a>
         <a class="main-header-nav__item" href="">Projects</a>
@@ -23,9 +22,10 @@
             <icon-linkedin class="w-6 h-6 icon-fill-current" />
           </div>
         </div>
-        <tooltip text="Toggle mode" placement="bottom">
-          <theme-toggle />
-        </tooltip>
+        <ui-separator orientation="vertical" class="mx-2" />
+        <ui-tooltip text="Toggle mode" placement="bottom">
+          <ui-theme-toggle />
+        </ui-tooltip>
       </div>
     </div>
   </header>
@@ -33,8 +33,6 @@
 
 <script setup lang="ts">
 import Logo from "~/assets/images/tuanviet-logo.svg";
-import Tooltip from "./ui/Tooltip.vue";
-import ThemeToggle from "./ui/ThemeToggle.vue";
 </script>
 
 <style scoped></style>
