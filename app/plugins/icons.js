@@ -10,6 +10,8 @@ import IconDownload from "~/assets/icons/download.svg";
 import IconCode from "~/assets/icons/code.svg";
 import IconLocation from "~/assets/icons/location.svg";
 import IconLink from "~/assets/icons/link.svg";
+import IconCopy from "~/assets/icons/copy.svg";
+import IconCheck from "~/assets/icons/check.svg";
 
 export const icons = [
   { iconName: "icon-github", component: IconGithub },
@@ -24,6 +26,8 @@ export const icons = [
   { iconName: "icon-code", component: IconCode },
   { iconName: "icon-location", component: IconLocation },
   { iconName: "icon-link", component: IconLink },
+  { iconName: "icon-copy", component: IconCopy },
+  { iconName: "icon-check", component: IconCheck },
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {

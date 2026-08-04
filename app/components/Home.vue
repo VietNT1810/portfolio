@@ -79,8 +79,8 @@
     <section id="about" class="about section">
       <div class="container">
         <h2 class="home-title">About me</h2>
-        <div class="flex items-baseline gap-8">
-          <p class="mb-8 max-w-150">
+        <div class="flex flex-col desktop:flex-row items-baseline gap-8">
+          <p class="max-w-150">
             I'm Việt, a frontend developer obsessed with the details. I bring
             designs to life with pixel-perfect precision, fluid animations,
             sharp typography, and clean, readable code.
@@ -103,6 +103,22 @@
                 <p class="about-grid__text">{{ item.content }}</p>
               </nuxt-link>
               <p v-else class="about-grid__text">{{ item.content }}</p>
+              <span v-if="item.isTime" class="time-diff"
+                >// {{ timeCompare }}</span
+              >
+              <button
+                v-if="item.copyContent"
+                class="copy-btn"
+                @click="handleCopy(item.copyContent, index)"
+              >
+                <Transition name="icon-fade" mode="out-in">
+                  <icon-check
+                    v-if="copied && copiedIndex === index"
+                    class="w-4 h-4"
+                  />
+                  <icon-copy v-else class="w-4 h-4" />
+                </Transition>
+              </button>
             </div>
           </div>
         </div>
@@ -112,6 +128,29 @@
 </template>
 
 <script setup lang="ts">
+import IconClock from "~/components/icon/clock.vue";
+import { useClipboard } from "@vueuse/core";
+
+// Time compare
+const { formatted } = useLocalTime("Asia/Ho_Chi_Minh");
+const visitorOffset = -new Date().getTimezoneOffset() / 60; // hours from UTC
+const yourOffset = 7; // e.g. UTC+7 for Hanoi
+
+const timeCompare = computed(() => {
+  const diff = visitorOffset - yourOffset;
+  if (diff === 0) return "same";
+  return `${Math.abs(diff)}h ${diff > 0 ? "ahead" : "behind"}`;
+});
+
+// Copy to clipboard
+const { copy, copied } = useClipboard({ copiedDuring: 1500 });
+const copiedIndex = ref<number | null>(null);
+
+function handleCopy(text: string, index: number) {
+  copy(text);
+  copiedIndex.value = index;
+}
+
 // Highlight code
 const code = `const user = {
   name: "Nguyen Tuan Viet",
@@ -140,38 +179,34 @@ const aboutItems = [
   {
     icon: "icon-code",
     content: "Frontend Developer",
-    href: "",
-    copyable: false,
   },
   {
     icon: "icon-location",
     content: "Hanoi, Vietnam",
     href: "https://www.google.com/maps/place/Ha+Noi,+Viet+Nam",
-    copyable: false,
   },
   {
     icon: "icon-phone",
     content: "+84 868 402 367",
     href: "tel:+84868402367",
-    copyable: true,
+    copyContent: "+84868402367",
+  },
+  {
+    icon: IconClock,
+    content: formatted,
+    href: "",
+    isTime: true,
   },
   {
     icon: "icon-link",
     content: "tuanviet.com",
     href: "https://tuanviet.com/",
-    copyable: false,
   },
   {
-    icon: "icon-link",
-    content: "tuanviet.com",
-    href: "https://tuanviet.com/",
-    copyable: false,
-  },
-  {
-    icon: "icon-link",
-    content: "tuanviet.com",
-    href: "https://tuanviet.com/",
-    copyable: false,
+    icon: "icon-mail",
+    content: "tuanviet19xx@gmail.com",
+    href: "mailto:tuanviet19xx@gmail.com",
+    copyContent: "tuanviet19xx@gmail.com",
   },
 ];
 </script>
