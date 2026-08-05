@@ -10,7 +10,7 @@
           </h1>
           <div class="code-card">
             <div class="code-header">
-              <icon-javascript class="code-icon" />
+              <icon-javascript class="code-icon icon-fill-current" />
               <span class="code-title">profile.js</span>
             </div>
             <div class="code-block" v-html="infoHTML"></div>
@@ -124,12 +124,47 @@
         </div>
       </div>
     </section>
+    <div class="stripe-divider">
+      <div class="stripe-divider__top" data-box-decoration="top"></div>
+      <div class="stripe-divider__bottom" data-box-decoration="bottom"></div>
+    </div>
+    <!-- Stack -->
+    <section id="stack" class="stack section">
+      <div class="container">
+        <h2 class="home-title">Tech Stack</h2>
+        <p class="mb-8">Technologies and modern tools I leverage to bring concepts to life.</p>
+        <div class="stack-grid">
+          <div
+            v-for="(stack, index) in groupedTechStack"
+            :key="stack.category"
+            class="stack-row"
+          >
+            <p class="stack-category">{{ stack.category }}</p>
+            <div class="stack-list">
+              <nuxt-link
+                v-for="item in stack.items"
+                :key="item.key"
+                :to="item.href"
+                target="_blank"
+                class="stack-pill"
+                :style="{ '--pill-main-color': item.color }"
+              >
+                <component :is="item.icon" class="stack-pill__icon" />
+                <span class="stack-pill__title">{{ item.title }}</span>
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
 <script setup lang="ts">
 import IconClock from "~/components/icon/clock.vue";
 import { useClipboard } from "@vueuse/core";
+import type { TechStack as TechStackType } from "~/types/tech-stack";
+import { TECH_STACK_LIST } from "~/data/tech-stack";
 
 // Time compare
 const { formatted } = useLocalTime("Asia/Ho_Chi_Minh");
@@ -209,6 +244,25 @@ const aboutItems = [
     copyContent: "tuanviet19xx@gmail.com",
   },
 ];
+
+// Tech stack
+function groupByCategory(
+  items: TechStackType[]
+): Record<string, TechStackType[]> {
+  return items.reduce<Record<string, TechStackType[]>>((acc, item) => {
+    for (const category of item.categories) {
+      (acc[category] ??= []).push(item);
+    }
+    return acc;
+  }, {} as Record<string, TechStackType[]>);
+}
+
+const groupedTechStack = computed(() =>
+  Object.entries(groupByCategory(TECH_STACK_LIST)).map(([category, items]) => ({
+    category,
+    items,
+  }))
+);
 </script>
 
 <style scoped></style>

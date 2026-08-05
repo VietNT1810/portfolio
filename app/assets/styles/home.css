@@ -82,7 +82,7 @@ section {
 
 #about {
   .about-grid {
-    @apply w-full grid grid-cols-1 md:grid-cols-2 border border-border gap-px bg-border;
+    @apply w-full grid grid-cols-1 md:grid-cols-2 border-2 border-border gap-0.5 bg-border;
     .about-grid__item {
       @apply flex items-center gap-2.5 p-2.5 bg-foreground;
       &:hover {
@@ -101,6 +101,45 @@ section {
       }
       .copy-btn {
         @apply cursor-pointer opacity-0;
+      }
+    }
+  }
+}
+
+#stack {
+  .stack-grid {
+    @apply grid grid-rows-1 divide-y divide-border border-2 border-border;
+    .stack-row {
+      @apply grid md:grid-cols-[190px_1fr] gap-2 md:gap-0 py-4;
+      .stack-category {
+        @apply md:border-r-2 border-border px-2.5 text-sm leading-6 font-mono font-medium text-muted;
+      }
+      .stack-list {
+        @apply px-2.5 flex flex-wrap gap-2;
+        .stack-pill {
+          @apply h-6 flex items-center gap-1.5 px-2 border border-border rounded-full grayscale hover:grayscale-0 transition-all duration-300;
+          &:hover {
+            border-color: color-mix(
+              in srgb,
+              var(--pill-main-color) 80%,
+              var(--primary) 20%
+            );
+            background-color: color-mix(in srgb, var(--pill-main-color) 10%, transparent);
+            .stack-pill__title {
+              color: color-mix(
+                in srgb,
+                var(--pill-main-color) 80%,
+                var(--primary) 20%
+              );
+            }
+          }
+          .stack-pill__icon {
+            @apply w-3.5 h-3.5 shrink-0;
+          }
+          .stack-pill__title {
+            @apply text-[12px] font-mono transition-all duration-300;
+          }
+        }
       }
     }
   }
