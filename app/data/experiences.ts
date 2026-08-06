@@ -1,0 +1,60 @@
+import type { Experience } from "~/types/experiences";
+
+export const EXPERIENCES_LIST: Experience[] = [
+  {
+    company: "Bakker Research International Limited",
+    employmentType: "Full-time",
+    title: "Frontend Developer",
+    period: "Jul 2023 - Mar 2026",
+    location: "Wanchai, Hong Kong (Remote)",
+    highlights: [
+      "Developed and maintained web applications using Vue, Nuxt.js, and Tailwind CSS.",
+      "Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      "Implemented responsive designs and optimized performance for various devices.",
+      "Participated in code reviews and provided constructive feedback to team members.",
+      "Contributed to the development of reusable components and libraries.",
+    ],
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "Vue",
+      "Nuxt.js",
+      "VueX",
+      "Pinia",
+      "Tailwind CSS",
+      "Figma",
+      "Chart.js",
+      "Agile",
+    ],
+  },
+  {
+    company: "Freelance",
+    employmentType: "Part-time",
+    title: "Frontend Developer",
+    period: "Jan 2023 - Jul 2023",
+    location: "",
+    highlights: [
+      "Developed and maintained web applications using Vue, Nuxt.js, and Tailwind CSS.",
+      "Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      "Implemented responsive designs and optimized performance for various devices.",
+      "Participated in code reviews and provided constructive feedback to team members.",
+      "Contributed to the development of reusable components and libraries.",
+    ],
+    skills: ["JavaScript", "Vue", "VueX", "Pinia", "Figma"],
+  },
+  {
+    company: "Beedu",
+    employmentType: "Full-time",
+    title: "Frontend Developer",
+    period: "Jun 2022 - Sep 2022",
+    location: "Hanoi, Vietnam (On-site)",
+    highlights: [
+      "Developed and maintained web applications using Vue, Nuxt.js, and Tailwind CSS.",
+      "Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      "Implemented responsive designs and optimized performance for various devices.",
+      "Participated in code reviews and provided constructive feedback to team members.",
+      "Contributed to the development of reusable components and libraries.",
+    ],
+    skills: ["JavaScript", "TypeScript", "Vue", "VueX", "ElementUI"],
+  },
+];

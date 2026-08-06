@@ -7,10 +7,10 @@
         </nuxt-link>
       </div>
       <nav class="main-header-nav">
-        <a class="main-header-nav__item" href="">About</a>
-        <a class="main-header-nav__item" href="">Skills</a>
-        <a class="main-header-nav__item" href="">Projects</a>
+        <a class="main-header-nav__item" href="#about">About</a>
+        <a class="main-header-nav__item" href="#stack">Skills</a>
         <a class="main-header-nav__item" href="">Experience</a>
+        <a class="main-header-nav__item" href="">Projects</a>
         <a class="main-header-nav__item" href="">Contact</a>
       </nav>
       <div class="main-header-actions">

@@ -10,7 +10,7 @@
   }
 
   .main-header-nav {
-    @apply flex items-center;
+    @apply hidden md:flex items-center;
 
     .main-header-nav__item {
       @apply h-8 text-[16px] flex items-center px-2 opacity-60 hover:opacity-100 hover:bg-border rounded-md transition-all ease-in-out duration-300;

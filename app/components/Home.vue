@@ -71,10 +71,7 @@
         </div>
       </div>
     </section>
-    <div class="stripe-divider">
-      <div class="stripe-divider__top" data-box-decoration="top"></div>
-      <div class="stripe-divider__bottom" data-box-decoration="bottom"></div>
-    </div>
+    <ui-stripe-divider />
     <!-- About -->
     <section id="about" class="about section">
       <div class="container">
@@ -124,15 +121,14 @@
         </div>
       </div>
     </section>
-    <div class="stripe-divider">
-      <div class="stripe-divider__top" data-box-decoration="top"></div>
-      <div class="stripe-divider__bottom" data-box-decoration="bottom"></div>
-    </div>
+    <ui-stripe-divider />
     <!-- Stack -->
     <section id="stack" class="stack section">
       <div class="container">
         <h2 class="home-title">Tech Stack</h2>
-        <p class="mb-8">Technologies and modern tools I leverage to bring concepts to life.</p>
+        <p class="mb-8">
+          Technologies and modern tools I leverage to bring concepts to life.
+        </p>
         <div class="stack-grid">
           <div
             v-for="(stack, index) in groupedTechStack"
@@ -151,12 +147,74 @@
               >
                 <component :is="item.icon" class="stack-pill__icon" />
                 <span class="stack-pill__title">{{ item.title }}</span>
+                <span v-if="item.experience" class="stack-asterisk">*</span>
               </nuxt-link>
+            </div>
+          </div>
+        </div>
+        <span class="text-[12px] text-muted font-mono"
+          ><span class="stack-asterisk">*</span> Hands-on experience</span
+        >
+      </div>
+    </section>
+    <ui-stripe-divider />
+
+    <!-- Experience -->
+    <section id="experience" class="experience section">
+      <div class="container">
+        <h2 class="home-title">Experience</h2>
+        <div class="experience-grid">
+          <div
+            v-for="(experience, index) in experiences"
+            :key="index"
+            class="experience-card"
+          >
+            <ui-separator
+              v-if="index > 0"
+              orientation="horizontal"
+              class="my-4"
+            />
+            <div class="experience-header">
+              <h2 class="experience-company">{{ experience.company }}</h2>
+              <span class="experience-location">{{ experience.location }}</span>
+            </div>
+            <div class="experience-subheader">
+              <h3 class="experience-title">
+                {{ experience.title }}
+                <ui-separator orientation="vertical" class="mx-2" />
+                <span class="experience-employment-type">
+                  {{ experience.employmentType }}
+                </span>
+              </h3>
+              <div class="experience-period">
+                <icon-calendar class="w-4 h-4" />
+                <span>{{ experience.period }}</span>
+              </div>
+            </div>
+            <ul class="experience-highlights">
+              <li
+                v-for="(highlight, hIndex) in experience.highlights"
+                :key="hIndex"
+              >
+                {{ highlight }}
+              </li>
+            </ul>
+            <div class="experience-skills">
+              <span
+                v-for="(skill, sIndex) in experience.skills"
+                :key="sIndex"
+                class="skill-pill"
+              >
+                {{ skill }}
+              </span>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <ui-stripe-divider />
+
+    <!-- Education -->
   </main>
 </template>
 
@@ -165,6 +223,7 @@ import IconClock from "~/components/icon/clock.vue";
 import { useClipboard } from "@vueuse/core";
 import type { TechStack as TechStackType } from "~/types/tech-stack";
 import { TECH_STACK_LIST } from "~/data/tech-stack";
+import { EXPERIENCES_LIST } from "~/data/experiences";
 
 // Time compare
 const { formatted } = useLocalTime("Asia/Ho_Chi_Minh");
@@ -263,6 +322,9 @@ const groupedTechStack = computed(() =>
     items,
   }))
 );
+
+// experience
+const experiences = ref(EXPERIENCES_LIST);
 </script>
 
 <style scoped></style>

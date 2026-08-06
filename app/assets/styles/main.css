@@ -61,6 +61,10 @@ body {
   @apply px-5 md:px-10 min-h-screen bg-background text-primary;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Conner box decoration */
 [data-box-decoration] {
   &:before,

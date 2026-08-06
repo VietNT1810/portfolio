@@ -80,6 +80,7 @@ section {
   }
 }
 
+/* About section */
 #about {
   .about-grid {
     @apply w-full grid grid-cols-1 md:grid-cols-2 border-2 border-border gap-0.5 bg-border;
@@ -106,6 +107,7 @@ section {
   }
 }
 
+/* Stack section */
 #stack {
   .stack-grid {
     @apply grid grid-rows-1 divide-y divide-border border-2 border-border;
@@ -117,14 +119,21 @@ section {
       .stack-list {
         @apply px-2.5 flex flex-wrap gap-2;
         .stack-pill {
-          @apply h-6 flex items-center gap-1.5 px-2 border border-border rounded-full grayscale hover:grayscale-0 transition-all duration-300;
+          @apply h-6 flex items-center gap-1.5 px-2 border border-border rounded-full transition-all duration-300;
           &:hover {
             border-color: color-mix(
               in srgb,
               var(--pill-main-color) 80%,
               var(--primary) 20%
             );
-            background-color: color-mix(in srgb, var(--pill-main-color) 10%, transparent);
+            background-color: color-mix(
+              in srgb,
+              var(--pill-main-color) 10%,
+              transparent
+            );
+            .stack-pill__icon {
+              @apply grayscale-0;
+            }
             .stack-pill__title {
               color: color-mix(
                 in srgb,
@@ -134,12 +143,65 @@ section {
             }
           }
           .stack-pill__icon {
-            @apply w-3.5 h-3.5 shrink-0;
+            @apply w-3.5 h-3.5 shrink-0 grayscale transition-all duration-300;
           }
           .stack-pill__title {
             @apply text-[12px] font-mono transition-all duration-300;
           }
         }
+      }
+    }
+  }
+  .stack-asterisk {
+    @apply text-[#e46370];
+  }
+}
+
+/* Experience section */
+#experience {
+  .experience-grid {
+    @apply grid grid-cols-1;
+    .experience-header,
+    .experience-subheader {
+      @apply flex flex-col md:flex-row justify-between items-baseline md:items-center gap-2;
+    }
+    .experience-header {
+      @apply mb-2;
+      .experience-company {
+        @apply font-bold text-xl font-mono;
+      }
+    }
+    .experience-subheader {
+      @apply text-muted;
+      .experience-title {
+        @apply flex items-center h-4;
+      }
+      .experience-period {
+        @apply flex items-center gap-2 border border-border px-2 py-1 rounded-md text-sm bg-muted/10;
+      }
+    }
+    .experience-highlights {
+      @apply list-disc list-inside pl-4 py-4;
+      li {
+        @apply leading-6;
+        &::marker {
+          @apply text-muted;
+        }
+        &:not(:last-child) {
+          @apply mb-2;
+        }
+      }
+    }
+    .experience-skills {
+      @apply flex flex-wrap gap-2;
+      .skill-pill {
+        @apply h-6 flex items-center gap-1.5 px-2 border rounded-full text-sm font-mono;
+        background-color: color-mix(
+          in srgb,
+          var(--color-primary) 5%,
+          transparent
+        );
+        border-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
       }
     }
   }

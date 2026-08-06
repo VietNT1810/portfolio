@@ -29,6 +29,7 @@ import IconBitbucket from "~/assets/icons/bitbucket.svg";
 import IconVercel from "~/assets/icons/vercel.svg";
 import IconFigma from "~/assets/icons/figma.svg";
 import IconPostman from "~/assets/icons/postman.svg";
+import IconCalendar from "~/assets/icons/calendar.svg";
 
 export const icons = [
   { iconName: "icon-github", component: IconGithub },
@@ -62,6 +63,7 @@ export const icons = [
   { iconName: "icon-vercel", component: IconVercel },
   { iconName: "icon-figma", component: IconFigma },
   { iconName: "icon-postman", component: IconPostman },
+  { iconName: "icon-calendar", component: IconCalendar },
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {
