@@ -76,48 +76,131 @@
     <section id="about" class="about section">
       <div class="container">
         <h2 class="home-title">About me</h2>
-        <div class="flex flex-col desktop:flex-row items-baseline gap-8">
-          <p class="max-w-150">
-            I'm Việt, a frontend developer obsessed with the details. I bring
-            designs to life with pixel-perfect precision, fluid animations,
-            sharp typography, and clean, readable code.
-          </p>
-          <div class="about-grid">
-            <div
-              v-for="(item, index) in aboutItems"
-              :key="index"
-              class="about-grid__item"
-            >
-              <div class="about-grid__icon">
-                <component :is="item.icon" class="w-4 h-4" />
+        <nav class="about-tabs flex items-center">
+          <button
+            v-for="tab in aboutTabs"
+            :key="tab.key"
+            class="about-tab"
+            :class="{ 'is-active': currentAboutTab === tab.key }"
+            @click="currentAboutTab = tab.key"
+          >
+            {{ tab.title }}
+          </button>
+        </nav>
+        <div class="about-tab__content">
+          <template v-if="currentAboutTab === 'overview'">
+            <div class="overview-content">
+              <p class="max-w-150">
+                I'm Việt, a frontend developer obsessed with the details. I
+                bring designs to life with pixel-perfect precision, fluid
+                animations, sharp typography, and clean, readable code.
+              </p>
+              <div class="about-grid">
+                <div
+                  v-for="(item, index) in aboutItems"
+                  :key="index"
+                  class="about-grid__item"
+                >
+                  <div class="about-grid__icon">
+                    <component :is="item.icon" class="w-4 h-4" />
+                  </div>
+                  <nuxt-link
+                    v-if="item.href"
+                    :to="item.href"
+                    target="_blank"
+                    class="hover:underline"
+                  >
+                    <p class="about-grid__text">{{ item.content }}</p>
+                  </nuxt-link>
+                  <p v-else class="about-grid__text">{{ item.content }}</p>
+                  <span v-if="item.isTime" class="time-diff"
+                    >// {{ timeCompare }}</span
+                  >
+                  <button
+                    v-if="item.copyContent"
+                    class="copy-btn"
+                    @click="handleCopy(item.copyContent, index)"
+                  >
+                    <Transition name="icon-fade" mode="out-in">
+                      <icon-check
+                        v-if="copied && copiedIndex === index"
+                        class="w-4 h-4"
+                      />
+                      <icon-copy v-else class="w-4 h-4" />
+                    </Transition>
+                  </button>
+                </div>
               </div>
-              <nuxt-link
-                v-if="item.href"
-                :to="item.href"
-                target="_blank"
-                class="hover:underline"
-              >
-                <p class="about-grid__text">{{ item.content }}</p>
-              </nuxt-link>
-              <p v-else class="about-grid__text">{{ item.content }}</p>
-              <span v-if="item.isTime" class="time-diff"
-                >// {{ timeCompare }}</span
-              >
-              <button
-                v-if="item.copyContent"
-                class="copy-btn"
-                @click="handleCopy(item.copyContent, index)"
-              >
-                <Transition name="icon-fade" mode="out-in">
-                  <icon-check
-                    v-if="copied && copiedIndex === index"
-                    class="w-4 h-4"
-                  />
-                  <icon-copy v-else class="w-4 h-4" />
-                </Transition>
-              </button>
             </div>
-          </div>
+          </template>
+          <template v-else-if="currentAboutTab === 'education'">
+            <div class="education-content">
+              <div class="education-item">
+                <div class="education-item__icon">
+                  <icon-education class="w-4 h-4" />
+                </div>
+                <dl>
+                  <dt class="education-item__title">
+                    University of Transport and Technology
+                  </dt>
+                  <dd class="education-item__info">
+                    Electronics and telecommunication | Graduated | 2017 - 2022
+                  </dd>
+                </dl>
+                <!-- <icon-open class="w-4 h-4 ml-auto" /> -->
+              </div>
+              <div class="education-item">
+                <div class="education-item__icon">
+                  <icon-education class="w-4 h-4" />
+                </div>
+                <dl>
+                  <dt class="education-item__title">Codegym Vietnam</dt>
+                  <dd class="education-item__info">
+                    Frontend development | Graduated | 2021 - 2022
+                  </dd>
+                </dl>
+                <!-- <icon-open class="w-4 h-4 ml-auto" /> -->
+              </div>
+            </div>
+          </template>
+          <template v-else-if="currentAboutTab === 'certifications'">
+            <div class="certification-content">
+              <nuxt-link
+                to="https://drive.google.com/drive/folders/1yM4TgK-bn6Kacv-xkacatek5yz8t6493?usp=sharing"
+                target="_blank"
+                class="certification-item"
+              >
+                <div class="certification-item__icon">
+                  <icon-verified class="w-4 h-4" />
+                </div>
+                <dl>
+                  <dt class="certification-item__title">
+                    Frontend Development Certificate
+                  </dt>
+                  <dd class="certification-item__info">
+                    Codegym Vietnam | 2022
+                  </dd>
+                </dl>
+                <icon-open class="w-4 h-4 ml-auto" />
+              </nuxt-link>
+              <nuxt-link
+                to="https://drive.google.com/file/d/1IbYnha9sHd5IA9WW481FcjCgJLSPiiMk/view?usp=sharing"
+                target="_blank"
+                class="certification-item"
+              >
+                <div class="certification-item__icon">
+                  <icon-verified class="w-4 h-4" />
+                </div>
+                <dl>
+                  <dt class="certification-item__title">
+                    Test of English for International Communication (TOEIC)
+                  </dt>
+                  <dd class="certification-item__info">IGG Vietnam | 2021</dd>
+                </dl>
+                <icon-open class="w-4 h-4 ml-auto" />
+              </nuxt-link>
+            </div>
+          </template>
         </div>
       </div>
     </section>
@@ -125,10 +208,12 @@
     <!-- Stack -->
     <section id="stack" class="stack section">
       <div class="container">
-        <h2 class="home-title">Tech Stack</h2>
-        <p class="mb-8">
-          Technologies and modern tools I leverage to bring concepts to life.
-        </p>
+        <h2 class="home-title">
+          Tech Stack
+          <p class="text-center">
+            Technologies and modern tools I leverage to bring concepts to life.
+          </p>
+        </h2>
         <div class="stack-grid">
           <div
             v-for="(stack, index) in groupedTechStack"
@@ -215,6 +300,32 @@
     <ui-stripe-divider />
 
     <!-- Education -->
+    <section id="education" class="education section">
+      <div class="container">
+        <h2 class="home-title">Education</h2>
+        <div class="education-grid">
+          <div class="education-card">
+            <div class="education-header">
+              <h2 class="education-school">
+                University of Transport and Technology
+              </h2>
+              <span class="education-location">Hanoi, Vietnam</span>
+            </div>
+            <div class="education-subheader">
+              <h3 class="education-degree">
+                Bachelor's Degree
+                <ui-separator orientation="vertical" class="mx-2" />
+                <span class="education-status">Graduated</span>
+              </h3>
+              <div class="education-period">
+                <icon-calendar class="w-4 h-4" />
+                <span>2015 - 2020</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -269,6 +380,8 @@ const { data: infoHTML } = await useAsyncData("code-user", () =>
 );
 
 // About items
+const currentAboutTab = useState("aboutTab", () => "overview");
+
 const aboutItems = [
   {
     icon: "icon-code",
@@ -303,6 +416,21 @@ const aboutItems = [
     copyContent: "tuanviet19xx@gmail.com",
   },
 ];
+
+const aboutTabs = ref([
+  {
+    key: "overview",
+    title: "Overview",
+  },
+  {
+    key: "education",
+    title: "Education",
+  },
+  {
+    key: "certifications",
+    title: "Certifications",
+  },
+]);
 
 // Tech stack
 function groupByCategory(

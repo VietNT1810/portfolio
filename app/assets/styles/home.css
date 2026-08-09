@@ -8,7 +8,10 @@ section {
 }
 
 .home-title {
-  @apply font-bold font-sans text-4xl mb-4;
+  @apply font-bold font-sans text-4xl mb-12 text-center;
+  p {
+    @apply text-base font-normal mt-4;
+  }
 }
 
 /* Hero section */
@@ -102,6 +105,67 @@ section {
       }
       .copy-btn {
         @apply cursor-pointer opacity-0;
+      }
+    }
+  }
+  .about-tabs {
+    @apply flex h-14 scrollbar-thin items-stretch justify-start gap-0 divide-x divide-border overflow-x-auto scroll-smooth xl:justify-center -mx-8 px-8 border-y border-border;
+    .about-tab {
+      @apply border-border px-6 cursor-pointer hover:bg-muted/10 transition-all duration-300;
+      &:first-child {
+        @apply border-l;
+      }
+      &:last-child {
+        @apply border-r;
+      }
+      &.is-active {
+        @apply bg-muted/10 relative;
+        &::after {
+          @apply block w-full h-0.5 bg-primary/50 absolute bottom-0 left-0 transition-all duration-300;
+          content: "";
+        }
+      }
+    }
+  }
+  .about-tab__content {
+    @apply mt-8;
+    .overview-content {
+      @apply flex flex-col desktop:flex-row items-baseline gap-8;
+    }
+    .education-content {
+      @apply grid grid-cols-1 border-2 border-border divide-y-2 divide-border;
+      .education-item {
+        @apply flex items-center py-2.5 px-2.5;
+        dl {
+          @apply mx-2.5;
+        }
+        .education-item__title {
+          @apply font-mono font-bold;
+        }
+        .education-item__info {
+          @apply text-muted;
+        }
+        .education-item__icon {
+          @apply w-6 h-6 flex items-center justify-center rounded-sm border border-border bg-muted/20 mx-2.5;
+        }
+      }
+    }
+    .certification-content {
+      @apply grid grid-cols-1 border-2 border-border divide-y-2 divide-border;
+      .certification-item {
+        @apply flex items-center py-2.5 px-2.5;
+        dl {
+          @apply mx-2.5;
+        }
+        .certification-item__title {
+          @apply font-mono font-bold;
+        }
+        .certification-item__info {
+          @apply text-muted;
+        }
+        .certification-item__icon {
+          @apply w-6 h-6 flex items-center justify-center rounded-sm border border-border bg-muted/20 mx-2.5;
+        }
       }
     }
   }
@@ -202,6 +266,35 @@ section {
           transparent
         );
         border-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+      }
+    }
+  }
+}
+
+/* Education */
+#education {
+  .education-grid {
+    @apply grid grid-cols-1;
+    .education-header,
+    .education-subheader {
+      @apply flex flex-col md:flex-row justify-between items-baseline md:items-center gap-2;
+    }
+    .education-header {
+      @apply mb-2;
+      .education-school {
+        @apply font-bold text-xl font-mono;
+      }
+    }
+    .education-subheader {
+      @apply text-muted;
+      .education-title {
+        @apply flex items-center h-4;
+      }
+      .education-period {
+        @apply flex items-center gap-2 border border-border px-2 py-1 rounded-md text-sm bg-muted/10;
+      }
+      .education-degree {
+        @apply flex items-center h-4;
       }
     }
   }

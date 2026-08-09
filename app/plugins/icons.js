@@ -30,6 +30,10 @@ import IconVercel from "~/assets/icons/vercel.svg";
 import IconFigma from "~/assets/icons/figma.svg";
 import IconPostman from "~/assets/icons/postman.svg";
 import IconCalendar from "~/assets/icons/calendar.svg";
+import IconEducation from "~/assets/icons/education.svg";
+import IconOpen from "~/assets/icons/open.svg";
+import IconVerified from "~/assets/icons/verified.svg";
+import IconChevronDown from "~/assets/icons/chevron-down.svg";
 
 export const icons = [
   { iconName: "icon-github", component: IconGithub },
@@ -64,6 +68,10 @@ export const icons = [
   { iconName: "icon-figma", component: IconFigma },
   { iconName: "icon-postman", component: IconPostman },
   { iconName: "icon-calendar", component: IconCalendar },
+  { iconName: "icon-education", component: IconEducation },
+  { iconName: "icon-open", component: IconOpen },
+  { iconName: "icon-verified", component: IconVerified },
+  { iconName: "icon-chevron-down", component: IconChevronDown },
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {

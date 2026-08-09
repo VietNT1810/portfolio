@@ -7,11 +7,44 @@
         </nuxt-link>
       </div>
       <nav class="main-header-nav">
-        <a class="main-header-nav__item" href="#about">About</a>
-        <a class="main-header-nav__item" href="#stack">Skills</a>
-        <a class="main-header-nav__item" href="">Experience</a>
-        <a class="main-header-nav__item" href="">Projects</a>
-        <a class="main-header-nav__item" href="">Contact</a>
+        <ui-dropdown
+          position="bottom-left"
+          :chevron="true"
+          trigger-class="main-header-nav__item"
+        >
+          <template #trigger="{ isOpen }">
+            <button>About</button>
+          </template>
+
+          <div class="header-dropdown">
+            <button @click="navigateToTab('overview')">Overview</button>
+            <button @click="navigateToTab('education')">Education</button>
+            <button @click="navigateToTab('certifications')">
+              Certifications
+            </button>
+          </div>
+        </ui-dropdown>
+        <button class="main-header-nav__item" @click="scrollToSection('stack')">
+          Skills
+        </button>
+        <button
+          class="main-header-nav__item"
+          @click="scrollToSection('experience')"
+        >
+          Experience
+        </button>
+        <button
+          class="main-header-nav__item"
+          @click="scrollToSection('projects')"
+        >
+          Projects
+        </button>
+        <button
+          class="main-header-nav__item"
+          @click="scrollToSection('contact')"
+        >
+          Contact
+        </button>
       </nav>
       <div class="main-header-actions">
         <div class="main-header-socials">
@@ -33,6 +66,21 @@
 
 <script setup lang="ts">
 import Logo from "~/assets/images/tuanviet-logo.svg";
+
+const currentAboutTab = useState("aboutTab", () => "overview");
+
+function scrollToSection(id: string) {
+  const section = document.getElementById(id);
+  if (section) {
+    const top = section.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+}
+
+function navigateToTab(tab: string) {
+  currentAboutTab.value = tab;
+  scrollToSection("about");
+}
 </script>
 
 <style scoped></style>
