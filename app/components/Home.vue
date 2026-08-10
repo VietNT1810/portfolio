@@ -299,33 +299,7 @@
     </section>
     <ui-stripe-divider />
 
-    <!-- Education -->
-    <section id="education" class="education section">
-      <div class="container">
-        <h2 class="home-title">Education</h2>
-        <div class="education-grid">
-          <div class="education-card">
-            <div class="education-header">
-              <h2 class="education-school">
-                University of Transport and Technology
-              </h2>
-              <span class="education-location">Hanoi, Vietnam</span>
-            </div>
-            <div class="education-subheader">
-              <h3 class="education-degree">
-                Bachelor's Degree
-                <ui-separator orientation="vertical" class="mx-2" />
-                <span class="education-status">Graduated</span>
-              </h3>
-              <div class="education-period">
-                <icon-calendar class="w-4 h-4" />
-                <span>2015 - 2020</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Projects -->
   </main>
 </template>
 
