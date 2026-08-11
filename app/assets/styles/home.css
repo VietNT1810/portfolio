@@ -271,30 +271,56 @@ section {
   }
 }
 
-/* Education */
-#education {
-  .education-grid {
-    @apply grid grid-cols-1;
-    .education-header,
-    .education-subheader {
-      @apply flex flex-col md:flex-row justify-between items-baseline md:items-center gap-2;
-    }
-    .education-header {
-      @apply mb-2;
-      .education-school {
-        @apply font-bold text-xl font-mono;
+/* Projects */
+#projects {
+  .project-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+    .project-card {
+      @apply flex flex-col p-4 bg-muted/10;
+      &:hover {
+        .project-card__image {
+          img {
+            @apply scale-105;
+          }
+        }
       }
-    }
-    .education-subheader {
-      @apply text-muted;
-      .education-title {
-        @apply flex items-center h-4;
+      .project-card__image {
+        @apply overflow-hidden aspect-video;
+
+        img {
+          @apply w-full h-full transition-all duration-300 object-cover;
+        }
       }
-      .education-period {
-        @apply flex items-center gap-2 border border-border px-2 py-1 rounded-md text-sm bg-muted/10;
+      .project-card__title {
+        @apply font-mono font-bold text-base mt-3;
       }
-      .education-degree {
-        @apply flex items-center h-4;
+      .project-card__des {
+        @apply font-sans text-sm text-primary/80 mt-1;
+      }
+      .project-card__stacks {
+        @apply flex flex-wrap gap-2 mt-4 mb-auto;
+        .project-card__stack {
+          @apply h-6 flex items-center gap-1.5 px-2 border rounded-full text-sm font-mono;
+          background-color: color-mix(
+            in srgb,
+            var(--color-primary) 5%,
+            transparent
+          );
+          border-color: color-mix(
+            in srgb,
+            var(--color-primary) 10%,
+            transparent
+          );
+        }
+      }
+      .project-card__actions {
+        @apply flex items-center gap-2 mt-4;
+        .project-card__open-btn {
+          @apply w-full h-11 flex items-center justify-between gap-2.5 bg-primary/20 px-3;
+        }
+        .project-card__github-btn {
+          @apply w-11 h-11 flex items-center justify-center bg-primary/20 shrink-0;
+        }
       }
     }
   }

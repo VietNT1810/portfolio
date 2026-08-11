@@ -257,7 +257,7 @@
             <ui-separator
               v-if="index > 0"
               orientation="horizontal"
-              class="my-4"
+              class="my-6"
             />
             <div class="experience-header">
               <h2 class="experience-company">{{ experience.company }}</h2>
@@ -300,6 +300,61 @@
     <ui-stripe-divider />
 
     <!-- Projects -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <h2 class="home-title">
+          Projects
+          <p class="text-center">
+            A showcase of my work, highlighting my skills and expertise in
+            frontend development.
+          </p>
+        </h2>
+        <div class="project-grid">
+          <nuxt-link
+            v-for="project in projects"
+            :key="project.key"
+            :to="project.link"
+            target="_blank"
+            class="project-card"
+          >
+            <div class="project-card__image">
+              <ClientOnly>
+                <nuxt-img :src="project.image" :alt="project.title" />
+              </ClientOnly>
+            </div>
+            <h3 class="project-card__title">{{ project.title }}</h3>
+            <p class="project-card__des">{{ project.description }}</p>
+            <ul class="project-card__stacks">
+              <li
+                v-for="(stack, index) in project.techStack"
+                :key="index"
+                class="project-card__stack"
+              >
+                {{ stack }}
+              </li>
+            </ul>
+            <div class="project-card__actions">
+              <nuxt-link
+                :to="project.link"
+                target="_blank"
+                class="project-card__open-btn"
+              >
+                Open project
+                <icon-open class="w-4 h-4" />
+              </nuxt-link>
+              <nuxt-link
+                :to="project.github"
+                target="_blank"
+                class="project-card__github-btn"
+                @click.stop
+              >
+                <icon-github class="w-4 h-4" />
+              </nuxt-link>
+            </div>
+          </nuxt-link>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -309,6 +364,7 @@ import { useClipboard } from "@vueuse/core";
 import type { TechStack as TechStackType } from "~/types/tech-stack";
 import { TECH_STACK_LIST } from "~/data/tech-stack";
 import { EXPERIENCES_LIST } from "~/data/experiences";
+import { PROJECT_LIST } from "~/data/projects";
 
 // Time compare
 const { formatted } = useLocalTime("Asia/Ho_Chi_Minh");
@@ -427,6 +483,9 @@ const groupedTechStack = computed(() =>
 
 // experience
 const experiences = ref(EXPERIENCES_LIST);
+
+// projects
+const projects = ref(PROJECT_LIST);
 </script>
 
 <style scoped></style>
