@@ -18,4 +18,34 @@
       @apply bg-primary/20;
     }
   }
+  &.is-loading {
+    &:after {
+      content: "";
+      @apply block rounded-full;
+      animation: spinAround 500ms infinite linear;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #ababab;
+      border-color: transparent transparent var(--primary) var(--primary);
+      position: absolute;
+      left: calc(50% - (1em * 0.5));
+      top: calc(50% - (1em * 0.5));
+    }
+    span {
+      @apply text-transparent;
+      svg {
+        @apply text-inherit;
+      }
+    }
+  }
+}
+
+/* Animation */
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

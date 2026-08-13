@@ -34,6 +34,7 @@ import IconEducation from "~/assets/icons/education.svg";
 import IconOpen from "~/assets/icons/open.svg";
 import IconVerified from "~/assets/icons/verified.svg";
 import IconChevronDown from "~/assets/icons/chevron-down.svg";
+import IconError from "~/assets/icons/error.svg";
 
 export const icons = [
   { iconName: "icon-github", component: IconGithub },
@@ -72,6 +73,7 @@ export const icons = [
   { iconName: "icon-open", component: IconOpen },
   { iconName: "icon-verified", component: IconVerified },
   { iconName: "icon-chevron-down", component: IconChevronDown },
+  { iconName: "icon-error", component: IconError },
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {

@@ -334,24 +334,227 @@
               </li>
             </ul>
             <div class="project-card__actions">
-              <nuxt-link
-                :to="project.link"
-                target="_blank"
+              <button
                 class="project-card__open-btn"
+                @click.stop="goToLink(project.link)"
               >
                 Open project
                 <icon-open class="w-4 h-4" />
-              </nuxt-link>
-              <nuxt-link
-                :to="project.github"
-                target="_blank"
+              </button>
+              <button
                 class="project-card__github-btn"
-                @click.stop
+                @click.stop="goToLink(project.github)"
               >
                 <icon-github class="w-4 h-4" />
-              </nuxt-link>
+              </button>
             </div>
           </nuxt-link>
+        </div>
+      </div>
+    </section>
+    <ui-stripe-divider />
+
+    <!-- Contact -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <h2 class="home-title">
+          Contact
+          <p class="text-center">
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your visions. Feel free to reach out!
+          </p>
+        </h2>
+        <div class="contact-grid">
+          <div class="contact-information">
+            <div class="flex flex-col gap-4">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <icon-mail class="w-4 h-4" />
+                </div>
+                <nuxt-link to="mailto:tuanviet19xx@gmail.com" target="_blank">
+                  tuanviet19xx@gmail.com
+                </nuxt-link>
+                <button
+                  class="copy-btn"
+                  @click="handleCopy('tuanviet19xx@gmail.com', 99)"
+                >
+                  <Transition name="icon-fade" mode="out-in">
+                    <icon-check
+                      v-if="copied && copiedIndex === 99"
+                      class="w-4 h-4"
+                    />
+                    <icon-copy v-else class="w-4 h-4" />
+                  </Transition>
+                </button>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <icon-phone class="w-4 h-4" />
+                </div>
+                <nuxt-link to="tel:+84868402367" target="_blank">
+                  +84 868 402 367
+                </nuxt-link>
+                <button
+                  class="copy-btn"
+                  @click="handleCopy('+84868402367', 88)"
+                >
+                  <Transition name="icon-fade" mode="out-in">
+                    <icon-check
+                      v-if="copied && copiedIndex === 88"
+                      class="w-4 h-4"
+                    />
+                    <icon-copy v-else class="w-4 h-4" />
+                  </Transition>
+                </button>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <icon-location class="w-4 h-4" />
+                </div>
+                <nuxt-link
+                  to="https://www.google.com/maps/place/Ha+Noi,+Viet+Nam"
+                  target="_blank"
+                >
+                  Hanoi, Vietnam
+                </nuxt-link>
+              </div>
+            </div>
+            <ui-button class="mt-5">
+              <span class="flex items-center gap-2">
+                Get my CV
+                <icon-download class="w-4.5 h-4.5" />
+              </span>
+            </ui-button>
+          </div>
+          <div class="contact-form">
+            <Transition mode="out-in" name="fade">
+              <!-- success state -->
+              <ui-conner-box
+                v-if="status === 'success'"
+                key="success"
+                data-slot="contact-form-success"
+                class="contact-form__success"
+              >
+                <p class="text-2xl font-medium">
+                  Message sent — thanks for reaching out.
+                </p>
+                <p class="text-4xl text-muted-foreground font-handwriting">
+                  I'll get back to you as soon as I can.
+                </p>
+              </ui-conner-box>
+
+              <!-- form state -->
+              <form
+                v-else
+                key="form"
+                data-slot="contact-form-fields"
+                class="flex flex-col gap-4"
+                novalidate
+                @submit.prevent="submit"
+              >
+                <!-- honeypot: visually hidden, kept out of tab order-->
+                <div class="sr-only" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input
+                    id="website"
+                    v-model="form.website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="name" class="text-sm font-medium"
+                    >Your name</label
+                  >
+                  <input
+                    id="name"
+                    v-model="form.name"
+                    type="text"
+                    maxlength="100"
+                    placeholder="Your name"
+                    data-slot="contact-form-input"
+                    :aria-invalid="!!fieldErrors.name"
+                    :class="fieldErrors.name && 'is-error'"
+                    :disabled="status === 'loading'"
+                    @blur="validateField('name')"
+                  />
+                  <div class="field-error__container">
+                    <Transition name="error-slide" mode="out-in">
+                      <div v-if="fieldErrors.name" class="field-error__text">
+                        <icon-error class="w-4 h-4" />
+                        <span>{{ fieldErrors.name }}</span>
+                      </div>
+                    </Transition>
+                  </div>
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="email" class="text-sm font-medium"
+                    >Your email</label
+                  >
+                  <input
+                    id="email"
+                    v-model="form.email"
+                    type="email"
+                    placeholder="you@example.com"
+                    data-slot="contact-form-input"
+                    :aria-invalid="!!fieldErrors.email"
+                    :class="fieldErrors.email && 'is-error'"
+                    :disabled="status === 'loading'"
+                    @blur="validateField('email')"
+                  />
+                  <div class="field-error__container">
+                    <Transition name="error-slide" mode="out-in">
+                      <div v-if="fieldErrors.email" class="field-error__text">
+                        <icon-error class="w-4 h-4" />
+                        <span>{{ fieldErrors.email }}</span>
+                      </div>
+                    </Transition>
+                  </div>
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="message" class="text-sm font-medium"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    v-model="form.message"
+                    maxlength="2000"
+                    rows="5"
+                    placeholder="What's on your mind?"
+                    data-slot="contact-form-input"
+                    :aria-invalid="!!fieldErrors.message"
+                    :class="fieldErrors.message && 'is-error'"
+                    :disabled="status === 'loading'"
+                    @blur="validateField('message')"
+                  />
+                  <div class="field-error__container">
+                    <Transition name="error-slide" mode="out-in">
+                      <div v-if="fieldErrors.message" class="field-error__text">
+                        <icon-error class="w-4 h-4" />
+                        <span>{{ fieldErrors.message }}</span>
+                      </div>
+                    </Transition>
+                  </div>
+                </div>
+
+                <p v-if="status === 'error'" class="text-sm text-destructive">
+                  {{ errorMessage }}
+                </p>
+                <ui-button
+                  buttonType="submit"
+                  :disabled="status === 'loading'"
+                  :loading="status === 'loading'"
+                  class="max-w-50 w-full"
+                >
+                  Submit
+                </ui-button>
+              </form>
+            </Transition>
+          </div>
         </div>
       </div>
     </section>
@@ -486,6 +689,14 @@ const experiences = ref(EXPERIENCES_LIST);
 
 // projects
 const projects = ref(PROJECT_LIST);
+
+function goToLink(link: string) {
+  window.open(link, "_blank");
+}
+
+// Contact
+const { form, status, errorMessage, fieldErrors, validateField, submit } =
+  useContactForm();
 </script>
 
 <style scoped></style>

@@ -8,6 +8,7 @@
 @import "./home.css";
 @import "./button.css";
 @import "./transition.css";
+@import "./input.css";
 
 @theme {
   --breakpoint-desktop: 1050px;
@@ -19,6 +20,7 @@
   --color-secondary: var(--secondary);
   --color-border: var(--border);
   --color-muted: var(--muted);
+  --color-error: var(--error);
 
   --font-sans: "Geist", sans-serif;
   --font-mono: "Geist Mono", monospace;
@@ -47,7 +49,8 @@
   --primary: #111111;
   --secondary: #fafafa;
   --muted: #ababab;
-  --border: #eeeeee;
+  --border: #cecece;
+  --error: #e46370;
 }
 
 .dark {

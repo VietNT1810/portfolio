@@ -1,8 +1,7 @@
 <template>
-  <div class="stripe-divider">
-    <div class="stripe-divider__top" data-box-decoration="top"></div>
-    <div class="stripe-divider__bottom" data-box-decoration="bottom"></div>
-  </div>
+  <ui-conner-box>
+    <div class="stripe-divider"></div>
+  </ui-conner-box>
 </template>
 
 <script setup lang="ts"></script>

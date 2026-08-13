@@ -1,0 +1,7 @@
+input {
+  @apply border border-border outline-none h-11 px-2.5 rounded-sm;
+}
+
+textarea {
+  @apply border border-border outline-none p-2.5 rounded-sm;
+}

@@ -19,12 +19,14 @@
     "@vueuse/nuxt": "^14.3.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^4.5.0",
+    "resend": "^6.19.0",
     "shiki": "^4.3.1",
     "tailwindcss": "^4.3.3",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-svg-loader": "^5.1.1",
     "vue": "^3.5.40",
-    "vue-router": "^5.2.0"
+    "vue-router": "^5.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",

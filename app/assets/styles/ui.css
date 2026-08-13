@@ -125,3 +125,13 @@
   opacity: 0;
   transform: translateY(2px);
 }
+
+/* Conner box */
+.conner-box {
+  @apply relative;
+
+  .conner-box__top,
+  .conner-box__bottom {
+    @apply absolute w-full h-full top-0 left-0;
+  }
+}
