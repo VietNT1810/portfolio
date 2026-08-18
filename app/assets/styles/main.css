@@ -9,6 +9,7 @@
 @import "./button.css";
 @import "./transition.css";
 @import "./input.css";
+@import "./footer.css";
 
 @theme {
   --breakpoint-desktop: 1050px;
