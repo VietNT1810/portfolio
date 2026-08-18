@@ -434,7 +434,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="name" class="text-sm font-medium"
+                  <label for="name" class="font-medium"
                     >Your name</label
                   >
                   <input
@@ -460,7 +460,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="email" class="text-sm font-medium"
+                  <label for="email" class="font-medium"
                     >Your email</label
                   >
                   <input
@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="message" class="text-sm font-medium"
+                  <label for="message" class="font-medium"
                     >Message</label
                   >
                   <textarea
