@@ -116,19 +116,10 @@
                   <span v-if="item.isTime" class="time-diff"
                     >// {{ timeCompare }}</span
                   >
-                  <button
+                  <ui-copy-button
                     v-if="item.copyContent"
-                    class="copy-btn"
-                    @click="handleCopy(item.copyContent, index)"
-                  >
-                    <Transition name="icon-fade" mode="out-in">
-                      <icon-check
-                        v-if="copied && copiedIndex === index"
-                        class="w-4 h-4"
-                      />
-                      <icon-copy v-else class="w-4 h-4" />
-                    </Transition>
-                  </button>
+                    :content="item.copyContent"
+                  />
                 </div>
               </div>
             </div>
@@ -374,18 +365,7 @@
                 <nuxt-link to="mailto:tuanviet19xx@gmail.com" target="_blank">
                   tuanviet19xx@gmail.com
                 </nuxt-link>
-                <button
-                  class="copy-btn"
-                  @click="handleCopy('tuanviet19xx@gmail.com', 99)"
-                >
-                  <Transition name="icon-fade" mode="out-in">
-                    <icon-check
-                      v-if="copied && copiedIndex === 99"
-                      class="w-4 h-4"
-                    />
-                    <icon-copy v-else class="w-4 h-4" />
-                  </Transition>
-                </button>
+                <ui-copy-button content="tuanviet19xx@gmail.com" />
               </div>
               <div class="contact-item">
                 <div class="contact-icon">
@@ -394,18 +374,7 @@
                 <nuxt-link to="tel:+84868402367" target="_blank">
                   +84 868 402 367
                 </nuxt-link>
-                <button
-                  class="copy-btn"
-                  @click="handleCopy('+84868402367', 88)"
-                >
-                  <Transition name="icon-fade" mode="out-in">
-                    <icon-check
-                      v-if="copied && copiedIndex === 88"
-                      class="w-4 h-4"
-                    />
-                    <icon-copy v-else class="w-4 h-4" />
-                  </Transition>
-                </button>
+                <ui-copy-button content="+84868402367" />
               </div>
               <div class="contact-item">
                 <div class="contact-icon">

@@ -104,7 +104,7 @@ section {
         @apply text-muted italic;
       }
       .copy-btn {
-        @apply cursor-pointer opacity-0;
+        @apply cursor-pointer md:opacity-0;
       }
     }
   }
@@ -348,7 +348,7 @@ section {
         @apply w-6 h-6 flex items-center justify-center rounded-sm border border-border bg-muted/20;
       }
       .copy-btn {
-        @apply cursor-pointer opacity-0 transition-all duration-300;
+        @apply cursor-pointer md:opacity-0 transition-all duration-300;
       }
     }
     .contact-form {
