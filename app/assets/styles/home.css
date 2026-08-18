@@ -109,7 +109,7 @@ section {
     }
   }
   .about-tabs {
-    @apply flex h-14 scrollbar-thin items-stretch justify-start gap-0 divide-x divide-border overflow-x-auto scroll-smooth xl:justify-center -mx-8 px-8 border-y border-border;
+    @apply flex h-14 scrollbar-thin items-stretch gap-0 divide-x divide-border overflow-x-auto scroll-smooth justify-start sm:justify-center border-y border-border;
     .about-tab {
       @apply border-border px-6 cursor-pointer hover:bg-muted/10 transition-all duration-300;
       &:first-child {

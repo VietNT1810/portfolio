@@ -5,5 +5,6 @@
     <Header />
     <NuxtPage />
     <Footer />
+    <UiScrollTop />
   </div>
 </template>

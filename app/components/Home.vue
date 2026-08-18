@@ -74,7 +74,7 @@
     <ui-stripe-divider />
     <!-- About -->
     <section id="about" class="about section">
-      <div class="container">
+      <div>
         <h2 class="home-title">About me</h2>
         <nav class="about-tabs flex items-center">
           <button
@@ -87,7 +87,7 @@
             {{ tab.title }}
           </button>
         </nav>
-        <div class="about-tab__content">
+        <div class="about-tab__content container">
           <template v-if="currentAboutTab === 'overview'">
             <div class="overview-content">
               <p class="max-w-150">
@@ -521,6 +521,8 @@
                   >
                   <textarea
                     id="message"
+                    class="hide-scroll"
+                    ref="messageTextarea"
                     v-model="form.message"
                     maxlength="2000"
                     rows="5"
@@ -529,6 +531,8 @@
                     :aria-invalid="!!fieldErrors.message"
                     :class="fieldErrors.message && 'is-error'"
                     :disabled="status === 'loading'"
+                    style="height: 120px"
+                    @input="autoResizeMessage"
                     @blur="validateField('message')"
                   />
                   <div class="field-error__container">
@@ -697,6 +701,29 @@ function goToLink(link: string) {
 // Contact
 const { form, status, errorMessage, fieldErrors, validateField, submit } =
   useContactForm();
+
+const messageTextarea = ref<HTMLTextAreaElement | null>(null);
+
+function autoResizeMessage() {
+  const textarea = messageTextarea.value;
+  if (!textarea) return;
+
+  textarea.style.height = "120px";
+  textarea.style.height = `${Math.max(120, textarea.scrollHeight)}px`;
+}
+
+onMounted(() => {
+  autoResizeMessage();
+});
+
+watch(
+  () => form.message,
+  () => {
+    nextTick(() => {
+      autoResizeMessage();
+    });
+  }
+);
 </script>
 
 <style scoped></style>

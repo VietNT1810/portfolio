@@ -22,6 +22,7 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-error: var(--error);
+  --color-button: var(--button);
 
   --font-sans: "Geist", sans-serif;
   --font-mono: "Geist Mono", monospace;
@@ -43,6 +44,14 @@
   }
 }
 
+@utility hide-scroll {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible*/
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #fafafa;
@@ -52,6 +61,7 @@
   --muted: #ababab;
   --border: #cecece;
   --error: #e46370;
+  --button: #e0e0e0;
 }
 
 .dark {
@@ -62,6 +72,7 @@
   --secondary: #111111;
   --muted: #ababab;
   --border: #222222;
+  --button: #404040;
 }
 
 body {
