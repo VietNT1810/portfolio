@@ -25,12 +25,13 @@
         <div class="hero-visual">
           <div class="hero-profile">
             <div class="avatar-shadow">
-              <nuxt-img
-                src="/images/avatar.jpg"
-                alt="Nguyen Tuan Viet profile picture"
-                width="300"
-                height="300"
-                class="hero-profile__image"
+              <ui-tilt-badge
+                imageUrl="/images/avatar.jpg"
+                :size="250"
+                :maxTilt="15"
+                :scale="1.1"
+                :shadowRadius="128"
+                :borderRadius="9999"
               />
             </div>
             <div class="profile-info">
@@ -434,9 +435,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="name" class="font-medium"
-                    >Your name</label
-                  >
+                  <label for="name" class="font-medium">Your name</label>
                   <input
                     id="name"
                     v-model="form.name"
@@ -460,9 +459,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="email" class="font-medium"
-                    >Your email</label
-                  >
+                  <label for="email" class="font-medium">Your email</label>
                   <input
                     id="email"
                     v-model="form.email"
@@ -485,9 +482,7 @@
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="message" class="font-medium"
-                    >Message</label
-                  >
+                  <label for="message" class="font-medium">Message</label>
                   <textarea
                     id="message"
                     class="hide-scroll"
@@ -541,6 +536,7 @@ import type { TechStack as TechStackType } from "~/types/tech-stack";
 import { TECH_STACK_LIST } from "~/data/tech-stack";
 import { EXPERIENCES_LIST } from "~/data/experiences";
 import { PROJECT_LIST } from "~/data/projects";
+import TiltBadge from "./ui/TiltBadge.vue";
 
 // Time compare
 const { formatted } = useLocalTime("Asia/Ho_Chi_Minh");
