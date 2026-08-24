@@ -36,6 +36,7 @@ import IconVerified from "~/assets/icons/verified.svg";
 import IconChevronDown from "~/assets/icons/chevron-down.svg";
 import IconError from "~/assets/icons/error.svg";
 import IconArrowUp from "~/assets/icons/arrow-up.svg";
+import IconHamburger from "~/assets/icons/hamburger.svg";
 
 export const icons = [
   { iconName: "icon-github", component: IconGithub },
@@ -76,6 +77,7 @@ export const icons = [
   { iconName: "icon-chevron-down", component: IconChevronDown },
   { iconName: "icon-error", component: IconError },
   { iconName: "icon-arrow-up", component: IconArrowUp },
+  { iconName: "icon-hamburger", component: IconHamburger },
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {

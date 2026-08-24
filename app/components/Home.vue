@@ -173,7 +173,7 @@
                     Codegym Vietnam | 2022
                   </dd>
                 </dl>
-                <icon-open class="w-4 h-4 ml-auto" />
+                <icon-open class="w-4 h-4 ml-auto shrink-0" />
               </nuxt-link>
               <nuxt-link
                 to="https://drive.google.com/file/d/1IbYnha9sHd5IA9WW481FcjCgJLSPiiMk/view?usp=sharing"
@@ -189,7 +189,7 @@
                   </dt>
                   <dd class="certification-item__info">IGG Vietnam | 2021</dd>
                 </dl>
-                <icon-open class="w-4 h-4 ml-auto" />
+                <icon-open class="w-4 h-4 ml-auto shrink-0" />
               </nuxt-link>
             </div>
           </template>

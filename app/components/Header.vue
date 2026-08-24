@@ -69,13 +69,7 @@ import Logo from "~/assets/images/tuanviet-logo.svg";
 
 const currentAboutTab = useState("aboutTab", () => "overview");
 
-function scrollToSection(id: string) {
-  const section = document.getElementById(id);
-  if (section) {
-    const top = section.getBoundingClientRect().top + window.scrollY - 64;
-    window.scrollTo({ top, behavior: "smooth" });
-  }
-}
+const { scrollToSection } = useScrollTo()
 
 function navigateToTab(tab: string) {
   currentAboutTab.value = tab;

@@ -28,12 +28,7 @@ const handleScroll = () => {
   previousScrollY = currentScrollY;
 };
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
+const { scrollToTop } = useScrollTo();
 
 onMounted(() => {
   previousScrollY = window.scrollY;

@@ -14,7 +14,7 @@
     <Header />
     <NuxtPage />
     <Footer />
-    <UiScrollTop />
+    <BottomBar />
   </div>
 </template>
 <script setup lang="ts">
