@@ -1,12 +1,17 @@
-import { createHighlighter, type Highlighter } from "shiki";
+import { createHighlighterCore, type HighlighterCore } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
+import githubLight from "shiki/themes/github-light.mjs";
+import vesper from "shiki/themes/vesper.mjs";
+import javascript from "shiki/langs/javascript.mjs";
 
-let highlighterPromise: Promise<Highlighter> | null = null;
+let highlighterPromise: Promise<HighlighterCore> | null = null;
 
 function getHighlighter() {
   if (!highlighterPromise) {
-    highlighterPromise = createHighlighter({
-      themes: ["github-light", "vesper"],
-      langs: ["javascript"],
+    highlighterPromise = createHighlighterCore({
+      themes: [githubLight, vesper],
+      langs: [javascript],
+      engine: createJavaScriptRegexEngine(),
     });
   }
   return highlighterPromise;
@@ -22,8 +27,8 @@ export async function highlightCode(code: string, lang: string) {
     },
     defaultColor: false,
     colorReplacements: {
-      "vesper": {
-        '#101010': '#000000',
+      vesper: {
+        "#101010": "#000000",
       },
     },
   });
