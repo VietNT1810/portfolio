@@ -1,75 +1,139 @@
-# Nuxt Minimal Starter
+# Nguyen Tuan Viet — Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A personal portfolio website showcasing my profile, work experience, technical skills, and featured projects. Built with modern web technologies to deliver a fast, responsive, and visually polished experience.
 
-## Setup
+🔗 **Live:** [github.com/VietNT1810/portfolio](https://github.com/VietNT1810/portfolio)
 
-Make sure to install dependencies:
+---
+
+## About
+
+Hi, I'm **Viet** — a Frontend Developer with a passion for building clean, performant, and user-friendly web applications. This portfolio is a reflection of my journey, the tools I work with, and the projects I'm proud of.
+
+- 📧 tuanviet19xx@gmail.com
+- 📱 +84 868 402 367
+- 💼 [LinkedIn](https://www.linkedin.com/in/tuan-viet-nguyen-681b35237)
+
+---
+
+## Tech Stack
+
+This portfolio is built with:
+
+| Category                | Technologies                                           |
+| ----------------------- | ------------------------------------------------------ |
+| **Framework**           | [Nuxt 4](https://nuxt.com), [Vue 3](https://vuejs.org) |
+| **Language**            | TypeScript                                             |
+| **Styling**             | Tailwind CSS v4, Sass                                  |
+| **Syntax Highlighting** | Shiki                                                  |
+| **Animations**          | GSAP, VueUse                                           |
+| **Email**               | Resend                                                 |
+| **Validation**          | Zod                                                    |
+| **Package Manager**     | pnpm                                                   |
+
+---
+
+## Featured Projects
+
+### 🗂 My Portfolio
+
+A personal portfolio website designed to present my profile, technical skills, and featured web development projects.
+
+> Nuxt 4 · TypeScript · TailwindCSS
+
+### 🛍 Isekai Shop
+
+A full-stack e-commerce platform made for anime and cosplay enthusiasts, featuring secure authentication and seamless shopping workflows.
+
+> React · Redux Toolkit · Express.js · MongoDB · JWT — [Live](https://isekai-shop.vercel.app) · [GitHub](https://github.com/VietNT1810/isekai)
+
+### 👨‍🍳 Maxim Lavrov
+
+A web app dedicated to a fictional celebrity chef, allowing food lovers to explore expert recipes and save their personal favorites.
+
+> React · Redux Toolkit · Firebase · Bootstrap — [Live](https://maxim-recipes.vercel.app) · [GitHub](https://github.com/VietNT1810/maxim-recipes)
+
+### 🐍 Snake Game
+
+A classic browser-based Snake game.
+
+> HTML · CSS · JavaScript — [Live](https://snake-game-vietnt.vercel.app)
+
+---
+
+## Experience
+
+**Frontend Developer** — Bakker Research International _(Jul 2023 – Mar 2026)_
+Remote · Wanchai, Hong Kong
+
+- Built and optimized core features for the [Communi](https://communi.com) platform
+- Developed the web app as a PWA for near-native mobile and desktop experience
+- Stack: Nuxt.js · TypeScript · Pinia · Tailwind CSS · Chart.js
+
+**Frontend Developer** — Freelance _(Jan 2023 – Jul 2023)_
+
+- Created and customized landing pages, dashboards, and web components for clients
+
+**Frontend Developer** — Beedu _(Jun 2022 – Sep 2022)_
+On-site · Hanoi, Vietnam
+
+- Built UI features for internal and client-facing apps including LienVietPostBank CRM and Lynkey BackOffice NFT management
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org) 20+
+- [pnpm](https://pnpm.io)
+
+### Install dependencies
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Start the development server
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+# → http://localhost:3000
 ```
 
-## Production
-
-Build the application for production:
+### Build for production
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+### Preview production build
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## Project Structure
+
+```
+app/
+├── assets/         # Global styles and static assets
+├── components/     # Vue components (UI, layout, effects)
+├── composables/    # Reusable composition functions
+├── data/           # Static data (projects, experiences, tech stack)
+├── pages/          # File-based routing
+├── plugins/        # Nuxt plugins
+└── types/          # TypeScript type definitions
+server/
+└── api/            # Server API routes (e.g. contact form)
+shared/
+└── schemas/        # Zod validation schemas
+```
+
+---
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).

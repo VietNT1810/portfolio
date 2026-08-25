@@ -608,8 +608,8 @@ const aboutItems = [
   },
   {
     icon: "icon-link",
-    content: "tuanviet.com",
-    href: "https://tuanviet.com/",
+    content: "tuanviet.dev",
+    href: "https://tuanviet.dev/",
   },
   {
     icon: "icon-mail",
