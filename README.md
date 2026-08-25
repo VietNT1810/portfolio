@@ -12,7 +12,7 @@ Hi, I'm **Viet** — a Frontend Developer with a passion for building clean, per
 
 - 📧 tuanviet19xx@gmail.com
 - 📱 +84 868 402 367
-- 💼 [LinkedIn](https://www.linkedin.com/in/tuan-viet-nguyen-681b35237)
+- 💼 [LinkedIn](https://www.linkedin.com/in/tuanviet-nguyen/)
 
 ---
 

@@ -15,7 +15,7 @@
             </div>
             <div class="code-block" v-html="infoHTML"></div>
           </div>
-          <ui-button class="mt-5">
+          <ui-button class="mt-5" @click="getCV">
             <span class="flex items-center gap-2">
               Get my CV
               <icon-download class="w-4.5 h-4.5" />
@@ -51,7 +51,7 @@
               </ui-tooltip>
               <ui-tooltip text="Tuan Viet Nguyen" placement="top">
                 <nuxt-link
-                  to="https://www.linkedin.com/in/tuan-viet-nguyen-681b35237"
+                  to="https://www.linkedin.com/in/tuanviet-nguyen/"
                   target="_blank"
                   class="profile-contact-btn"
                 >
@@ -389,7 +389,7 @@
                 </nuxt-link>
               </div>
             </div>
-            <ui-button class="mt-5">
+            <ui-button class="mt-5" @click="getCV">
               <span class="flex items-center gap-2">
                 Get my CV
                 <icon-download class="w-4.5 h-4.5" />
@@ -689,6 +689,11 @@ watch(
     });
   }
 );
+
+function getCV() {
+  const cvUrl = "/assets/VietNT_Resume.pdf";
+  window.open(cvUrl, "_blank");
+}
 </script>
 
 <style scoped></style>
