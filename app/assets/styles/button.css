@@ -1,0 +1,67 @@
+.button {
+  @apply relative px-3 py-2 cursor-pointer;
+  & > span {
+    @apply relative leading-3.5 text-sm;
+    /* z-index: 1; */
+  }
+  &:not([disabled]):hover::before {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  &:before {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-full shadow-border-bottom rounded-lg;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &.is-primary {
+    &:before {
+      @apply bg-button;
+    }
+  }
+  &.is-loading {
+    &:after {
+      content: "";
+      @apply block rounded-full;
+      animation: spinAround 500ms infinite linear;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #ababab;
+      border-color: transparent transparent var(--primary) var(--primary);
+      position: absolute;
+      left: calc(50% - (1em * 0.5));
+      top: calc(50% - (1em * 0.5));
+    }
+    span {
+      @apply text-transparent;
+      svg {
+        @apply text-inherit;
+      }
+    }
+  }
+}
+
+.scroll-top-btn {
+  @apply fixed bottom-4 right-4 flex items-center justify-center w-8 h-8 bg-button rounded-sm cursor-pointer;
+  transition: opacity 0.2s ease;
+  svg {
+    @apply w-4 h-4 text-primary;
+  }
+
+  &.is-scrolling-down {
+    opacity: 0.2;
+  }
+
+  &.is-scrolling-up {
+    opacity: 1;
+  }
+}
+
+/* Animation */
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -1,21 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import path from "path";
+import svgLoader from "vite-svg-loader";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/eslint'
-  ],
+  modules: ["@nuxt/eslint", "@vueuse/nuxt", "@nuxt/fonts", "@nuxt/image"],
   eslint: {
     config: {
-      stylistic: true
-    }
+      stylistic: true,
+    },
   },
-  css: ['~/assets/styles/main.css'],
+  css: ["~/assets/styles/main.css"],
   vite: {
     plugins: [
       tailwindcss(),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(__dirname, "assets/icons/")],
+        symbolId: "icon-[name]", // e.g. icon-message-circle
+      }),
+      svgLoader(),
     ],
   },
-})
+  fonts: {
+    families: [
+      { name: "Geist", provider: "google", global: true },
+      { name: "Geist Mono", provider: "google", global: true },
+      { name: "Caveat", provider: "google", global: true },
+    ],
+  },
+  runtimeConfig: {
+    resendApiKey: process.env.RESEND_API_KEY,
+    contactEmail: process.env.CONTACT_EMAIL,
+  },
+});

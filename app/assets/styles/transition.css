@@ -1,0 +1,31 @@
+.icon-fade-enter-active,
+.icon-fade-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.icon-fade-enter-from,
+.icon-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.icon-fade-enter-to,
+.icon-fade-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.error-slide-enter-active,
+.error-slide-leave-active {
+  transition: transform .3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.error-slide-enter-from,
+.error-slide-leave-to {
+  transform: translateX(100%);
+}
+
+.error-slide-enter-to,
+.error-slide-leave-from {
+  transform: translateX(0);
+}

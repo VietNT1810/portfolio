@@ -1,13 +1,126 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import "./header.css";
+@import "./icon.css";
+@import "./ui.css";
+@import "./home.css";
+@import "./button.css";
+@import "./transition.css";
+@import "./input.css";
+@import "./footer.css";
+@import "./dropdown.css";
+
 @theme {
-  --color-black: #000000;
-  --color-black-90: #111111;
-  --color-black-80: #222222;
-  --color-text: #ffffff;
+  --breakpoint-desktop: 1050px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-error: var(--error);
+  --color-button: var(--button);
+
+  --font-sans: "Geist", sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  --font-handwriting: "caveat", cursive;
+  --shadow-border-bottom: 0px 2px 0px 0px var(--border),
+    0px 0px 0px 1px var(--border);
+}
+
+@utility diagonal-stripes {
+  @apply [--pattern-foreground:var(--color-border)]/56;
+  @apply bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px];
+}
+
+@utility stripe-divider {
+  @apply relative h-8;
+  &:before {
+    content: "";
+    @apply absolute h-full w-full diagonal-stripes border-y border-border;
+  }
+}
+
+@utility hide-scroll {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible*/
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #fafafa;
+  --card: #f5f5f5;
+  --primary: #111111;
+  --secondary: #fafafa;
+  --muted: #ababab;
+  --border: #cecece;
+  --error: #e46370;
+  --button: #e0e0e0;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #111111;
+  --card: #1b1b1b;
+  --primary: #fafafa;
+  --secondary: #111111;
+  --muted: #ababab;
+  --border: #222222;
+  --button: #404040;
 }
 
 body {
-  background-color: var(--color-black);
-  color: var(--color-text);
+  @apply px-5 md:px-10 min-h-screen bg-background text-primary pb-16 md:pb-0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Conner box decoration */
+[data-box-decoration] {
+  &:before,
+  &:after {
+    content: "";
+    @apply absolute w-2 h-2 bg-foreground border border-border;
+  }
+
+  &[data-box-decoration="top"] {
+    &:before {
+      @apply -top-1 -left-1;
+    }
+
+    &:after {
+      @apply -top-1 -right-1;
+    }
+  }
+
+  &[data-box-decoration="bottom"] {
+    &:before {
+      @apply -bottom-1 -left-1;
+    }
+
+    &:after {
+      @apply -bottom-1 -right-1;
+    }
+  }
+}
+
+/* Theme for code block */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
 }

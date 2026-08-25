@@ -12,15 +12,25 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@floating-ui/vue": "^2.0.1",
+    "@nuxt/image": "2.1.0",
     "@tailwindcss/vite": "^4.3.3",
+    "@vueuse/core": "^14.3.0",
+    "@vueuse/nuxt": "^14.3.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^4.5.0",
+    "resend": "^6.19.0",
+    "shiki": "^4.3.1",
     "tailwindcss": "^4.3.3",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-svg-loader": "^5.1.1",
     "vue": "^3.5.40",
-    "vue-router": "^5.2.0"
+    "vue-router": "^5.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@nuxt/fonts": "^0.14.0",
     "eslint": "^10.7.0",
     "typescript": "^7.0.2"
   }

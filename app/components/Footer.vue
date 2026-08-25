@@ -1,6 +1,6 @@
 <template>
-  <footer>
-    footer
+  <footer class="main-footer" data-box-decoration="top">
+    <p>(c) 2026 Nguyen Tuan Viet. All rights reserved.</p>
   </footer>
 </template>
 
