@@ -1,4 +1,3 @@
-import { Resend } from "resend";
 import { contactSchema } from "#shared/schemas/contact";
 
 const rateLimitMap = new Map<string, number[]>();
@@ -37,17 +36,23 @@ export default defineEventHandler(async (event) => {
   rateLimitMap.set(ip, recent);
 
   const config = useRuntimeConfig();
-  const resend = new Resend(config.resendApiKey);
 
-  const { error } = await resend.emails.send({
-    from: "Portfolio <onboarding@resend.dev>",
-    to: config.contactEmail,
-    replyTo: parsed.data.email,
-    subject: `New message from ${parsed.data.name}`,
-    text: parsed.data.message,
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${config.resendApiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: 'Portfolio <onboarding@resend.dev>',
+      to: config.contactEmail,
+      reply_to: parsed.data.email,
+      subject: `New message from ${parsed.data.name} - ${parsed.data.email}`,
+      text: parsed.data.message,
+    }),
   });
 
-  if (error) {
+  if (!res.ok) {
     throw createError({
       statusCode: 502,
       statusMessage: "Failed to send. Please try again.",
