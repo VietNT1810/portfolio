@@ -35,4 +35,18 @@ export default defineNuxtConfig({
     resendApiKey: process.env.RESEND_API_KEY,
     contactEmail: process.env.CONTACT_EMAIL,
   },
+  app: {
+    head: {
+      title: "Tuấn Việt - Frontend Developer",
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      meta: [
+        { name: "author", content: "Nguyen Tuan Viet" },
+        { name: "robots", content: "index, follow" },
+        { name: "theme-color", content: "#0a0a0a" },
+      ],
+    },
+  },
 });
