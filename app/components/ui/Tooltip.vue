@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, nextTick, type CSSProperties } from "vue";
+import { ref, reactive, nextTick, onMounted, onUnmounted, type CSSProperties } from "vue";
 
 type Placement = "top" | "bottom" | "left" | "right";
 
@@ -58,6 +58,20 @@ const tooltipStyle = reactive<CSSProperties>({
 
 let showTimer: ReturnType<typeof setTimeout> | undefined;
 let hideTimer: ReturnType<typeof setTimeout> | undefined;
+
+function hideImmediate(): void {
+  clearTimeout(showTimer);
+  clearTimeout(hideTimer);
+  visible.value = false;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", hideImmediate, { passive: true, capture: true });
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", hideImmediate, { capture: true });
+});
 
 function show(): void {
   clearTimeout(showTimer);
