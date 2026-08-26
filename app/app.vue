@@ -14,9 +14,15 @@
     <Header />
     <NuxtPage />
     <Footer />
-    <BottomBar />
+    <BottomBar v-if="isMobile" />
+    <UiScrollTop />
   </div>
 </template>
 <script setup lang="ts">
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isMobile = breakpoints.smaller("md");
+
 const isDark = useDark();
 </script>
